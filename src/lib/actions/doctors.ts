@@ -1,10 +1,10 @@
 "use server";
 
-import { Gender } from "@prisma/client";
+import { currentUser } from "@clerk/nextjs/server";
+import type { Gender } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 import { prisma } from "../prisma";
 import { generateAvatar } from "../utils";
-import { revalidatePath } from "next/cache";
-import { currentUser } from "@clerk/nextjs/server";
 
 export async function getDoctors() {
   try {
@@ -43,7 +43,8 @@ export async function createDoctor(input: CreateDoctorInput) {
       throw new Error("Unauthorized: Only admins can create doctors.");
     }
 
-    if (!input.name || !input.email) throw new Error("Name and email are required");
+    if (!input.name || !input.email)
+      throw new Error("Name and email are required");
 
     const doctor = await prisma.doctor.create({
       data: {
@@ -81,7 +82,8 @@ export async function updateDoctor(input: UpdateDoctorInput) {
     }
 
     // validate
-    if (!input.name || !input.email) throw new Error("Name and email are required");
+    if (!input.name || !input.email)
+      throw new Error("Name and email are required");
 
     const currentDoctor = await prisma.doctor.findUnique({
       where: { id: input.id },

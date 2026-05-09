@@ -25,17 +25,17 @@ function Footer() {
             <h4 className="font-medium mb-3">Product</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#" className="hover:text-foreground">
+                <a href="#how-it-works" className="hover:text-foreground">
                   How it works
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground">
+                <a href="#pricing" className="hover:text-foreground">
                   Pricing
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground">
+                <a href="#faq" className="hover:text-foreground">
                   FAQ
                 </a>
               </li>
@@ -46,17 +46,17 @@ function Footer() {
             <h4 className="font-medium mb-3">Support</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#" className="hover:text-foreground">
+                <a href="#help" className="hover:text-foreground">
                   Help center
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground">
+                <a href="#contact" className="hover:text-foreground">
                   Contact us
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground">
+                <a href="#status" className="hover:text-foreground">
                   Status
                 </a>
               </li>
@@ -67,17 +67,17 @@ function Footer() {
             <h4 className="font-medium mb-3">Legal</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#" className="hover:text-foreground">
+                <a href="#privacy" className="hover:text-foreground">
                   Privacy
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground">
+                <a href="#terms" className="hover:text-foreground">
                   Terms
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground">
+                <a href="#security" className="hover:text-foreground">
                   Security
                 </a>
               </li>
@@ -86,11 +86,13 @@ function Footer() {
         </div>
 
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; 2024 DentAssist AI. Built for real people with real dental questions.</p>
+          <p>
+            &copy; 2024 DentAssist AI. Built for real people with real dental
+            questions.
+          </p>
         </div>
       </div>
     </footer>
   );
 }
 export default Footer;
-

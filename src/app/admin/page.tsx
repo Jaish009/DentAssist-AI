@@ -1,6 +1,7 @@
 import { currentUser } from "@clerk/nextjs/server";
 
 export const dynamic = "force-dynamic";
+
 import { redirect } from "next/navigation";
 import AdminDashboardClient from "./AdminDashboardClient";
 

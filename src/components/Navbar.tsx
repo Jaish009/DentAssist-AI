@@ -16,7 +16,13 @@ function Navbar() {
         {/* LOGO */}
         <div className="flex items-center gap-8">
           <Link href="/dashboard" className="flex items-center gap-2">
-            <Image src="/logo.png" alt="DentAssist AI Logo" width={32} height={32} className="w-11" />
+            <Image
+              src="/logo.png"
+              alt="DentAssist AI Logo"
+              width={32}
+              height={32}
+              className="w-11"
+            />
           </Link>
 
           <div className="flex items-center gap-6">
@@ -35,7 +41,9 @@ function Navbar() {
             <Link
               href="/appointments"
               className={`flex items-center gap-2 transition-colors hover:text-foreground ${
-                pathname === "/appointments" ? "text-foreground" : "text-muted-foreground"
+                pathname === "/appointments"
+                  ? "text-foreground"
+                  : "text-muted-foreground"
               }`}
             >
               <CalendarIcon className="w-4 h-4" />
@@ -45,7 +53,9 @@ function Navbar() {
             <Link
               href="/voice"
               className={`flex items-center gap-2 transition-colors hover:text-foreground ${
-                pathname === "/voice" ? "text-foreground" : "text-muted-foreground"
+                pathname === "/voice"
+                  ? "text-foreground"
+                  : "text-muted-foreground"
               }`}
             >
               <MicIcon className="w-4 h-4" />
@@ -54,7 +64,9 @@ function Navbar() {
             <Link
               href="/pro"
               className={`flex items-center gap-2 transition-colors hover:text-foreground ${
-                pathname === "/pro" ? "text-foreground" : "text-muted-foreground"
+                pathname === "/pro"
+                  ? "text-foreground"
+                  : "text-muted-foreground"
               }`}
             >
               <CrownIcon className="w-4 h-4" />
@@ -83,4 +95,3 @@ function Navbar() {
   );
 }
 export default Navbar;
-

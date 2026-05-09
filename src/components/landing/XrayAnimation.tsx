@@ -11,7 +11,8 @@ export default function XrayAnimation() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const W = 620, H = 340;
+    const W = 620,
+      H = 340;
 
     function noise(x: number, y: number, scale = 1) {
       const s = scale;
@@ -31,29 +32,38 @@ export default function XrayAnimation() {
       th: number,
       brightness: number,
       crowned = false,
-      cavity = false
+      cavity = false,
     ) {
       ctx!.save();
       const grd = ctx!.createLinearGradient(tx, ty, tx + tw, ty + th);
       const b = brightness;
-      grd.addColorStop(0, `rgba(${Math.floor(b * 0.82)},${Math.floor(b * 0.82)},${Math.floor(b * 0.85)},1)`);
+      grd.addColorStop(
+        0,
+        `rgba(${Math.floor(b * 0.82)},${Math.floor(b * 0.82)},${Math.floor(b * 0.85)},1)`,
+      );
       grd.addColorStop(0.35, `rgba(${b},${b},${b},1)`);
-      grd.addColorStop(0.65, `rgba(${Math.floor(b * 0.95)},${Math.floor(b * 0.95)},${Math.floor(b * 0.95)},1)`);
-      grd.addColorStop(1, `rgba(${Math.floor(b * 0.75)},${Math.floor(b * 0.75)},${Math.floor(b * 0.78)},1)`);
+      grd.addColorStop(
+        0.65,
+        `rgba(${Math.floor(b * 0.95)},${Math.floor(b * 0.95)},${Math.floor(b * 0.95)},1)`,
+      );
+      grd.addColorStop(
+        1,
+        `rgba(${Math.floor(b * 0.75)},${Math.floor(b * 0.75)},${Math.floor(b * 0.78)},1)`,
+      );
       ctx!.fillStyle = grd;
       ctx!.beginPath();
-      // @ts-ignore - roundRect is available in modern browsers
-      if (ctx!.roundRect) {
-        // @ts-ignore
-        ctx!.roundRect(tx, ty, tw, th, [3, 3, 2, 2]);
-      } else {
-        ctx!.rect(tx, ty, tw, th);
-      }
+      ctx!.roundRect(tx, ty, tw, th, [3, 3, 2, 2]);
       ctx!.fill();
 
       const lineG = ctx!.createLinearGradient(tx, ty, tx, ty + th);
-      lineG.addColorStop(0, `rgba(${Math.floor(b * 0.55)},${Math.floor(b * 0.55)},${Math.floor(b * 0.55)},0.9)`);
-      lineG.addColorStop(1, `rgba(${Math.floor(b * 0.45)},${Math.floor(b * 0.45)},${Math.floor(b * 0.45)},0.6)`);
+      lineG.addColorStop(
+        0,
+        `rgba(${Math.floor(b * 0.55)},${Math.floor(b * 0.55)},${Math.floor(b * 0.55)},0.9)`,
+      );
+      lineG.addColorStop(
+        1,
+        `rgba(${Math.floor(b * 0.45)},${Math.floor(b * 0.45)},${Math.floor(b * 0.45)},0.6)`,
+      );
       ctx!.strokeStyle = lineG;
       ctx!.lineWidth = 0.7;
       ctx!.beginPath();
@@ -75,29 +85,66 @@ export default function XrayAnimation() {
       if (cavity) {
         ctx!.fillStyle = "rgba(0,0,0,0.55)";
         ctx!.beginPath();
-        ctx!.ellipse(tx + tw * 0.5, ty + th * 0.3, tw * 0.22, th * 0.14, 0, 0, Math.PI * 2);
+        ctx!.ellipse(
+          tx + tw * 0.5,
+          ty + th * 0.3,
+          tw * 0.22,
+          th * 0.14,
+          0,
+          0,
+          Math.PI * 2,
+        );
         ctx!.fill();
         ctx!.fillStyle = "rgba(20,20,20,0.3)";
         ctx!.beginPath();
-        ctx!.ellipse(tx + tw * 0.5, ty + th * 0.3, tw * 0.32, th * 0.2, 0, 0, Math.PI * 2);
+        ctx!.ellipse(
+          tx + tw * 0.5,
+          ty + th * 0.3,
+          tw * 0.32,
+          th * 0.2,
+          0,
+          0,
+          Math.PI * 2,
+        );
         ctx!.fill();
       }
       ctx!.restore();
     }
 
-    function drawRoot(rx: number, ry: number, rw: number, rh: number, brightness: number, count = 1) {
+    function drawRoot(
+      rx: number,
+      ry: number,
+      rw: number,
+      rh: number,
+      brightness: number,
+      count = 1,
+    ) {
       ctx!.save();
       const b = brightness;
       if (count === 1) {
         const g = ctx!.createLinearGradient(rx, ry, rx + rw, ry + rh);
-        g.addColorStop(0, `rgba(${Math.floor(b * 0.65)},${Math.floor(b * 0.65)},${Math.floor(b * 0.65)},0.9)`);
-        g.addColorStop(0.5, `rgba(${Math.floor(b * 0.75)},${Math.floor(b * 0.75)},${Math.floor(b * 0.75)},0.85)`);
-        g.addColorStop(1, `rgba(${Math.floor(b * 0.45)},${Math.floor(b * 0.45)},${Math.floor(b * 0.45)},0.5)`);
+        g.addColorStop(
+          0,
+          `rgba(${Math.floor(b * 0.65)},${Math.floor(b * 0.65)},${Math.floor(b * 0.65)},0.9)`,
+        );
+        g.addColorStop(
+          0.5,
+          `rgba(${Math.floor(b * 0.75)},${Math.floor(b * 0.75)},${Math.floor(b * 0.75)},0.85)`,
+        );
+        g.addColorStop(
+          1,
+          `rgba(${Math.floor(b * 0.45)},${Math.floor(b * 0.45)},${Math.floor(b * 0.45)},0.5)`,
+        );
         ctx!.fillStyle = g;
         ctx!.beginPath();
         ctx!.moveTo(rx, ry);
         ctx!.lineTo(rx + rw, ry);
-        ctx!.quadraticCurveTo(rx + rw * 0.8, ry + rh * 0.7, rx + rw * 0.5, ry + rh);
+        ctx!.quadraticCurveTo(
+          rx + rw * 0.8,
+          ry + rh * 0.7,
+          rx + rw * 0.5,
+          ry + rh,
+        );
         ctx!.quadraticCurveTo(rx + rw * 0.2, ry + rh * 0.7, rx, ry);
         ctx!.fill();
       } else {
@@ -105,13 +152,24 @@ export default function XrayAnimation() {
           const ox = rx + i * (rw / count);
           const ow = rw / count - 1;
           const g = ctx!.createLinearGradient(ox, ry, ox + ow, ry + rh);
-          g.addColorStop(0, `rgba(${Math.floor(b * 0.65)},${Math.floor(b * 0.65)},${Math.floor(b * 0.65)},0.85)`);
-          g.addColorStop(1, `rgba(${Math.floor(b * 0.4)},${Math.floor(b * 0.4)},${Math.floor(b * 0.4)},0.4)`);
+          g.addColorStop(
+            0,
+            `rgba(${Math.floor(b * 0.65)},${Math.floor(b * 0.65)},${Math.floor(b * 0.65)},0.85)`,
+          );
+          g.addColorStop(
+            1,
+            `rgba(${Math.floor(b * 0.4)},${Math.floor(b * 0.4)},${Math.floor(b * 0.4)},0.4)`,
+          );
           ctx!.fillStyle = g;
           ctx!.beginPath();
           ctx!.moveTo(ox, ry);
           ctx!.lineTo(ox + ow, ry);
-          ctx!.quadraticCurveTo(ox + ow * 0.7, ry + rh * 0.7, ox + ow * 0.5, ry + rh);
+          ctx!.quadraticCurveTo(
+            ox + ow * 0.7,
+            ry + rh * 0.7,
+            ox + ow * 0.5,
+            ry + rh,
+          );
           ctx!.quadraticCurveTo(ox + ow * 0.3, ry + rh * 0.7, ox, ry);
           ctx!.fill();
         }
@@ -173,7 +231,7 @@ export default function XrayAnimation() {
       ctx!.fillText("R", W - 22, H / 2);
 
       for (let i = 0; i < 8; i++) {
-        const x = 20 + i * (W - 40) / 7;
+        const x = 20 + (i * (W - 40)) / 7;
         ctx!.fillStyle = "rgba(100,95,85,0.3)";
         ctx!.fillRect(x, H - 8, 6, 4);
       }
@@ -227,7 +285,14 @@ export default function XrayAnimation() {
       });
 
       lowerTeeth.forEach((t) => {
-        drawRoot(t.x + 1, t.y + t.h, t.w - 2, t.rl, t.b, t.roots === 3 ? 2 : t.roots);
+        drawRoot(
+          t.x + 1,
+          t.y + t.h,
+          t.w - 2,
+          t.rl,
+          t.b,
+          t.roots === 3 ? 2 : t.roots,
+        );
       });
 
       upperTeeth.forEach((t) => {
@@ -270,13 +335,7 @@ export default function XrayAnimation() {
 
       ctx!.fillStyle = "rgba(200,30,30,0.85)";
       ctx!.beginPath();
-      // @ts-ignore
-      if (ctx!.roundRect) {
-        // @ts-ignore
-        ctx!.roundRect(ct.x + ct.w + 4, ct.y - 2, 42, 14, 3);
-      } else {
-        ctx!.rect(ct.x + ct.w + 4, ct.y - 2, 42, 14);
-      }
+      ctx!.roundRect(ct.x + ct.w + 4, ct.y - 2, 42, 14, 3);
       ctx!.fill();
       ctx!.fillStyle = "#fff";
       ctx!.font = "bold 7px monospace";
@@ -301,13 +360,7 @@ export default function XrayAnimation() {
       ctx!.save();
       ctx!.fillStyle = "rgba(60,180,120,0.75)";
       ctx!.beginPath();
-      // @ts-ignore
-      if (ctx!.roundRect) {
-        // @ts-ignore
-        ctx!.roundRect(W - 100, 10, 90, 14, 3);
-      } else {
-        ctx!.rect(W - 100, 10, 90, 14);
-      }
+      ctx!.roundRect(W - 100, 10, 90, 14, 3);
       ctx!.fill();
       ctx!.fillStyle = "#fff";
       ctx!.font = "bold 7px monospace";
@@ -315,13 +368,7 @@ export default function XrayAnimation() {
 
       ctx!.fillStyle = "rgba(200,30,30,0.75)";
       ctx!.beginPath();
-      // @ts-ignore
-      if (ctx!.roundRect) {
-        // @ts-ignore
-        ctx!.roundRect(W - 100, 28, 90, 14, 3);
-      } else {
-        ctx!.rect(W - 100, 28, 90, 14);
-      }
+      ctx!.roundRect(W - 100, 28, 90, 14, 3);
       ctx!.fill();
       ctx!.fillStyle = "#fff";
       ctx!.fillText("1 FLAGGED", W - 96, 38);
@@ -338,8 +385,42 @@ export default function XrayAnimation() {
       ctx!.save();
       ctx!.font = "7px monospace";
       ctx!.fillStyle = "rgba(130,125,110,0.5)";
-      const upperNums = ["16", "15", "14", "13", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1"];
-      const lowerNums = ["17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32"];
+      const upperNums = [
+        "16",
+        "15",
+        "14",
+        "13",
+        "12",
+        "11",
+        "10",
+        "9",
+        "8",
+        "7",
+        "6",
+        "5",
+        "4",
+        "3",
+        "2",
+        "1",
+      ];
+      const lowerNums = [
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+      ];
       upperTeeth.forEach((t, i) => {
         ctx!.fillText(upperNums[i], t.x + t.w / 2 - 5, 22);
       });
@@ -375,8 +456,13 @@ export default function XrayAnimation() {
     <div className="relative rounded-xl overflow-hidden border border-white/10 bg-black shadow-2xl">
       {/* animated scan line */}
       <div className="absolute inset-x-0 h-[2px] bg-blue-400/40 animate-scan z-10 pointer-events-none" />
-      <canvas ref={canvasRef} width={620} height={340} className="w-full h-auto block" />
-      
+      <canvas
+        ref={canvasRef}
+        width={620}
+        height={340}
+        className="w-full h-auto block"
+      />
+
       {/* overlay gloss */}
       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 pointer-events-none" />
     </div>
