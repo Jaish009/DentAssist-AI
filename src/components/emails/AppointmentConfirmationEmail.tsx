@@ -36,7 +36,7 @@ function AppointmentConfirmationEmail({
         <Container style={container}>
           <Section style={logoContainer}>
             <Img
-              src="https://i.ibb.co.com/tRy6cC2/logo.png"
+              src={`${process.env.NEXT_PUBLIC_APP_URL}/logo.png`}
               width="50"
               height="50"
               alt="DentAssist AI"

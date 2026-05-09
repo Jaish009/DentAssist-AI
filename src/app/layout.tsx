@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "DentAssist AI - AI Powered Dental Assistant",
   description:
-    "Get instant dental advice through voice calls with our AI assistant. Avaiable 24/7.",
+    "Get instant dental advice through voice calls with our AI assistant. Available 24/7.",
 };
 
 export default function RootLayout({
@@ -42,8 +42,7 @@ export default function RootLayout({
       >
         <html lang="en">
           <body className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}>
-            {/* this is done in the home page component */}
-            {/* <UserSync /> */}
+            <UserSync />
             <Toaster />
             {children}
           </body>

@@ -40,9 +40,9 @@
   --sidebar-accent-foreground: #000000;
   --sidebar-border: #000000;
   --sidebar-ring: #a5b4fc;
-  --font-sans: DM Sans, sans-serif;
-  --font-serif: DM Sans, sans-serif;
-  --font-mono: Space Mono, monospace;
+  --font-sans: var(--font-geist-sans, sans-serif);
+  --font-serif: var(--font-geist-sans, sans-serif);
+  --font-mono: var(--font-geist-mono, monospace);
   --radius: 1rem;
   --shadow-x: 0px;
   --shadow-y: 0px;
@@ -95,9 +95,9 @@
   --sidebar-accent-foreground: #000000;
   --sidebar-border: #ffffff;
   --sidebar-ring: #818cf8;
-  --font-sans: DM Sans, sans-serif;
-  --font-serif: DM Sans, sans-serif;
-  --font-mono: Space Mono, monospace;
+  --font-sans: var(--font-geist-sans, sans-serif);
+  --font-serif: var(--font-geist-sans, sans-serif);
+  --font-mono: var(--font-geist-mono, monospace);
   --radius: 1rem;
   --shadow-x: 0px;
   --shadow-y: 0px;

@@ -1,7 +1,5 @@
 "use client";
 
-export const dynamic = "force-dynamic";
-
 import { AppointmentConfirmationModal } from "@/components/appointments/AppointmentConfirmationModal";
 import BookingConfirmationStep from "@/components/appointments/BookingConfirmationStep";
 import DoctorSelectionStep from "@/components/appointments/DoctorSelectionStep";

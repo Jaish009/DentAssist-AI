@@ -1,9 +1,15 @@
 import AppointmentConfirmationEmail from "@/components/emails/AppointmentConfirmationEmail";
 import resend from "@/lib/resend";
+import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
+    const { userId } = await auth();
+    if (!userId) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const body = await request.json();
 
     const {
@@ -21,10 +27,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
+    const senderEmail = process.env.RESEND_FROM_EMAIL || "no-reply@resend.dev";
+
     // send the email
-    // do not use this in prod, only for testing purposes
     const { data, error } = await resend.emails.send({
-      from: "DentAssist AI <no-reply@resend.dev>",
+      from: `DentAssist AI <${senderEmail}>`,
       to: [userEmail],
       subject: "Appointment Confirmation - DentAssist AI",
       react: AppointmentConfirmationEmail({
